@@ -115,8 +115,8 @@ object Parser {
                 pubDate = readData(parser, "pubDate")
             } else if (name == "description") {
                 description = readData(parser, "description")
-            } else if (name == "guid") {
-                downloadLink = readData(parser, "guid")
+            } else if (name == "link") {
+                downloadLink = readData(parser, "link")
             } else if (name == "itunes:image") {
                 imageLink = parser.getAttributeValue(null, "href")
                 parser.next()

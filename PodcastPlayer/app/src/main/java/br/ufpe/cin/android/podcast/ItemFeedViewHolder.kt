@@ -1,6 +1,7 @@
 package br.ufpe.cin.android.podcast
 
 import android.content.Intent
+import android.net.Uri
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -24,6 +25,10 @@ class ItemFeedViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         dateView.text = item.pubDate
 
         downloadButtonView.setOnClickListener {
+            val intent = Intent(context.applicationContext, DownloadEpisodeService::class.java)
+            intent.data = Uri.parse(item.link)
+
+            context.startService(intent)
             Toast.makeText(context, "Downloading episode...", Toast.LENGTH_SHORT).show()
         }
     }
