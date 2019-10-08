@@ -13,6 +13,6 @@ interface ItemFeedDao {
     @Query(value = "SELECT * FROM itemsfeed WHERE downloadLink = :downloadLink")
     fun getByDownloadLink(downloadLink: String): ItemFeed
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertAll(vararg items: ItemFeed)
 }

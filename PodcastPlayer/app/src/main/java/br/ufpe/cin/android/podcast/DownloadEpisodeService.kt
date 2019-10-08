@@ -51,7 +51,7 @@ class DownloadEpisodeService : IntentService("DownloadEpisodeService") {
                 .downloadedEpisodeDao()
                 .insertAll(downloadedEpisode)
 
-            Log.d("Service", "done ${output.path}")
+            Log.d("Service", "done $url  ${output.path}")
         } catch (e2: IOException) {
             Log.e(javaClass.name, "Exception durante download", e2)
         }

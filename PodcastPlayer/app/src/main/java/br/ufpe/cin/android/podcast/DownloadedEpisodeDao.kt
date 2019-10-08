@@ -1,9 +1,6 @@
 package br.ufpe.cin.android.podcast
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface DownloadedEpisodeDao {
@@ -11,8 +8,14 @@ interface DownloadedEpisodeDao {
     fun getAll(): List<DownloadedEpisode>
 
     @Query(value = "SELECT * FROM downloadedEpisodes WHERE downloadLink = :downloadLink")
-    fun getByDownloadLink(downloadLink: String): DownloadedEpisode
+    fun getByDownloadLink(downloadLink: String): DownloadedEpisode?
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertAll(vararg items: DownloadedEpisode)
+
+    @Update
+    fun updateAll(vararg items: DownloadedEpisode)
+
+    @Delete
+    fun deleteAll(vararg items: DownloadedEpisode)
 }

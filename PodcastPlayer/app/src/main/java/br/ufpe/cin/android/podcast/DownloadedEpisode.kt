@@ -7,10 +7,11 @@ import androidx.room.PrimaryKey
 data class DownloadedEpisode(
     @PrimaryKey
     val downloadLink: String,
-    val filePath: String
+    val filePath: String,
+    val lastPause: Int = 0
 ) {
 
     override fun toString(): String {
-        return downloadLink
+        return "url=$downloadLink, path=$filePath"
     }
 }
