@@ -20,7 +20,6 @@ class ItemFeedAdapter(private val itemFeedList: List<ItemFeed>, private val play
                 .downloadedEpisodeDao()
                 .getByDownloadLink(item.downloadLink)
             uiThread {
-                Log.d("Item", "search ${item.downloadLink} got $downloadedEpisode")
                 holder.bind(item, downloadedEpisode)
             }
         }

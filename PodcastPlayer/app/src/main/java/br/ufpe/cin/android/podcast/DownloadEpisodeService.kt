@@ -15,8 +15,6 @@ import java.net.URL
 class DownloadEpisodeService : IntentService("DownloadEpisodeService") {
     override fun onHandleIntent(intent: Intent?) {
         try {
-            Log.d("Service", "start download")
-
             val root = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
             root?.mkdirs()
             val output = File(root, intent!!.data!!.lastPathSegment)
@@ -51,7 +49,6 @@ class DownloadEpisodeService : IntentService("DownloadEpisodeService") {
                 .downloadedEpisodeDao()
                 .insertAll(downloadedEpisode)
 
-            Log.d("Service", "done $url  ${output.path}")
         } catch (e2: IOException) {
             Log.e(javaClass.name, "Exception durante download", e2)
         }
